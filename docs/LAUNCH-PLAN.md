@@ -22,7 +22,6 @@ The following is the complete intended parent/zone shape. Values marked `PENDING
 
 ```text
 # Handshake parent resource — preserve any unrelated current records found at activation
-NS    ns1.welcome.
 GLUE4 ns1.welcome. PENDING_HOSTLIMO_IPV4
 DS    PENDING_KSK_KEY_TAG 13 2 PENDING_KSK_SHA256_DIGEST
 
@@ -38,6 +37,8 @@ welcome.              21600 IN DNSKEY 256 3 13 PENDING_ZSK_PUBLIC_KEY
 ```
 
 No approval request should be made while a `PENDING_*` value remains.
+
+`GLUE4` supplies both the `NS ns1.welcome.` referral and its IPv4 glue, so a duplicate standalone `NS` is not required for this in-zone nameserver. The trailing dot on `ns1.welcome.` is required. Do not add `SYNTH4` when using this explicit GLUE4 design. Bob updates replace the complete resource payload, so preserve any unrelated current records discovered during the final readback.
 
 ## Onboarding sequence
 
