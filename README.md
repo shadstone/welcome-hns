@@ -33,4 +33,4 @@ The static build is in `dist/client`. Publish immutable releases identified by a
 
 Rollback is a symlink change to the previously verified release followed by `nginx -t` and an approved reload. Application rollback does not change NS, GLUE, DS, DNSKEY, TLS keys, or TLSA. Preserve native HTTP and HTTPS as separate listeners.
 
-No production deployment, DNS change, on-chain transaction, or external repository creation is authorized by this checkout.
+No production deployment, DNS change, or on-chain transaction is authorized by this checkout.
