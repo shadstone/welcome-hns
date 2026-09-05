@@ -18,7 +18,7 @@ DS
   Digest:     6A40B7CD158C45BA125549AE13096AE781F18522C3C7D08879326DBC45D6132C
 ```
 
-These values were staged and independently calculated on 2026-09-05. They are not live.
+These values were staged and independently calculated on 2026-09-05. The owner submitted them in Bob on 2026-09-05; confirmation and active-tree publication must still be verified independently.
 
 The final period in `ns1.welcome.` is required. A Handshake `GLUE4` record produces both the NS referral and the IPv4 glue, so do not add a duplicate NS record for this design. Do not add SYNTH4 alongside it.
 

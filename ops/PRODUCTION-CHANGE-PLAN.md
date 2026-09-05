@@ -1,6 +1,6 @@
 # `welcome` production change plan
 
-Prepared on 2026-09-05 for the approved DigitalOcean droplet `handout-iamthat` (`167.71.215.247`). This document contains public values only. It is a proposal, not evidence that the service or Handshake parent resource is live.
+Prepared on 2026-09-05 for the approved DigitalOcean droplet `handout-iamthat` (`167.71.215.247`). The server-side plan was activated and verified on 2026-09-05; the owner-submitted Handshake parent update was still awaiting tree activation at the final check. This document contains public values only.
 
 ## Staged identity
 
