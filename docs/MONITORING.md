@@ -11,4 +11,6 @@ The public catalog is generated from a small approved list. Endpoint monitors ma
 
 Resolver and connection timeouts are retried three times. A single timeout cannot turn a healthy entry into a confirmed outage. Human review is required for health downgrades, content changes, new entries, and featured placement.
 
+Monitor imports are monotonic: an observation is applied only when its `checked_at` timestamp is newer than the catalog's current `lastVerified` evidence. This prevents an older crawler snapshot from replacing a newer direct audit.
+
 The workflow sends only public DNS and endpoint metadata to GitHub. Wallet records, portfolio exports, private keys, tokens, internal Atlas data, and owner contact details are excluded.

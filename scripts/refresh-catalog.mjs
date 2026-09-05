@@ -28,6 +28,14 @@ function stateFor(row) {
   return { protocol: row.http_status_code ? 'native-http' : 'unknown', health: 'unavailable', monitorState: 'unknown' };
 }
 
+function hasNewerEvidence(remoteCheckedAt, localCheckedAt) {
+  const remoteTime = Date.parse(remoteCheckedAt || '');
+  const localTime = Date.parse(localCheckedAt || '');
+  if (!Number.isFinite(remoteTime)) return false;
+  if (!Number.isFinite(localTime)) return true;
+  return remoteTime > localTime;
+}
+
 const [catalog, remote] = await Promise.all([
   readFile(catalogPath, 'utf8').then(JSON.parse),
   fetchWithRetry(source),
@@ -35,7 +43,7 @@ const [catalog, remote] = await Promise.all([
 const rows = new Map((remote.rows || []).map((row) => [row.root_name, row]));
 const updated = catalog.map((site) => {
   const row = rows.get(site.asciiName);
-  if (!row) return site;
+  if (!row || !hasNewerEvidence(row.checked_at, site.lastVerified)) return site;
   const status = stateFor(row);
   return {
     ...site,
