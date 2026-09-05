@@ -1,0 +1,16 @@
+$ORIGIN welcome.
+$TTL 21600
+
+@ IN SOA ns1.welcome. hostmaster.welcome. (
+  2026090501 ; serial
+  86400      ; refresh
+  7200       ; retry
+  604800     ; expire
+  300        ; minimum
+)
+
+@ IN NS ns1.welcome.
+ns1 IN A 167.71.215.247
+@ IN A 167.71.215.247
+www IN A 167.71.215.247
+_443._tcp IN TLSA 3 1 1 7046abd89e6a7c70d9b4e50fc24b76039cb791a46aea10036c4ad7bc86943107

@@ -4,19 +4,21 @@ Do not broadcast this update until the HostLimo zone is signed and every pending
 
 ## Records entered in Bob
 
-For an in-zone nameserver at `ns1.welcome.`, the intended complete parent resource is:
+For an in-zone nameserver at `ns1.welcome.`, the proposed complete parent resource is:
 
 ```text
 GLUE4
   Nameserver: ns1.welcome.
-  IPv4:       PENDING_HOSTLIMO_IPV4
+  IPv4:       167.71.215.247
 
 DS
-  Key tag:    PENDING_KSK_KEY_TAG
+  Key tag:    48802
   Algorithm:  13
   Digest type: 2
-  Digest:     PENDING_KSK_SHA256_DIGEST
+  Digest:     6A40B7CD158C45BA125549AE13096AE781F18522C3C7D08879326DBC45D6132C
 ```
+
+These values were staged and independently calculated on 2026-09-05. They are not live.
 
 The final period in `ns1.welcome.` is required. A Handshake `GLUE4` record produces both the NS referral and the IPv4 glue, so do not add a duplicate NS record for this design. Do not add SYNTH4 alongside it.
 
@@ -29,11 +31,11 @@ These are served from the signed HostLimo authoritative zone:
 ```text
 welcome.             SOA     ...
 welcome.             NS      ns1.welcome.
-ns1.welcome.         A       PENDING_HOSTLIMO_IPV4
-welcome.             A       PENDING_HOSTLIMO_IPV4
-welcome.             DNSKEY  257 3 13 PENDING_KSK_PUBLIC_KEY
-welcome.             DNSKEY  256 3 13 PENDING_ZSK_PUBLIC_KEY
-_443._tcp.welcome.   TLSA    3 1 1 PENDING_TLS_SPKI_SHA256
+ns1.welcome.         A       167.71.215.247
+welcome.             A       167.71.215.247
+welcome.             DNSKEY  257 3 13 Gs+i86fLAcDkZ40/50Zrj0+cYDvdG6Ci7VqPxNuavUhvV7GuJe0OFxmP5QQgbPxQ3PKr8lgm3EJcufh8mekuZQ==
+welcome.             DNSKEY  256 3 13 shZB12aO2+zsKoT3vJ7I7qzEP/6hod5p4pbMuQMv8R48oILASM5pfbvqJJirO1KiH147ZsH0WHg9U/mrWKEGgg==
+_443._tcp.welcome.   TLSA    3 1 1 7046abd89e6a7c70d9b4e50fc24b76039cb791a46aea10036c4ad7bc86943107
                      RRSIG   generated for every signed RRset
 ```
 
