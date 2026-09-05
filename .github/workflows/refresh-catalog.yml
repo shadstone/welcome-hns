@@ -1,0 +1,34 @@
+name: Refresh verified HNS catalog
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run catalog:refresh
+      - run: npm test
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/hns-catalog-refresh
+          delete-branch: true
+          commit-message: 'chore: refresh verified HNS catalog'
+          title: 'chore: refresh verified HNS catalog'
+          body: |
+            Automated status refresh for already-approved entries.
+
+            Review health changes and verification evidence before merging. This workflow never adds submitted sites automatically.
+          labels: catalog-review
