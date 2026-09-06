@@ -27,6 +27,8 @@ Edit `data/sites.json` only with verification evidence. Every entry keeps Unicod
 
 Site submissions arrive through the issue form after the GitHub repository is created. A maintainer verifies ownership context, content safety, DNSSEC, TLSA, HTTP/HTTPS behavior, and visitor value before editing the catalog.
 
+Redirects are followed during review. A root is listed only when its final destination still matches the title and description shown to visitors; a valid DANE redirect alone is not enough.
+
 ## Deployment and rollback
 
 The static build is in `dist/client`. Publish immutable releases identified by a Git tag and artifact checksum. HostLimo should point nginx at a versioned release directory and update a `current` symlink only after validation.

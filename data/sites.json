@@ -85,23 +85,6 @@
     "monitorState": "dane_https"
   },
   {
-    "unicodeName": "hnsai",
-    "asciiName": "hnsai",
-    "title": "HNS AI",
-    "description": "An experimental terminal-like corner where Handshake ideas meet artificial intelligence.",
-    "category": "Experimental",
-    "nativeUrl": "https://hnsai/",
-    "normalUrl": null,
-    "protocol": "dane-https",
-    "lastVerified": "2026-08-31T01:27:54Z",
-    "verifiedLabel": "Aug 31",
-    "health": "healthy",
-    "featured": false,
-    "symbol": "◎",
-    "evidence": "DenuoWeb monitor: DNSSEC valid, DANE valid, HTTP 307, HTTPS 307; 2026-08-31T01:27:54Z.",
-    "monitorState": "dane_https"
-  },
-  {
     "unicodeName": "humour",
     "asciiName": "humour",
     "title": "Humour",
