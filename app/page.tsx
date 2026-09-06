@@ -21,8 +21,8 @@ const statusCopy = { healthy: 'Working now', degraded: 'Needs another look', una
 
 function SiteCard({ site, featured = false }: { site: SiteEntry; featured?: boolean }) {
   const isAvailable = site.health !== 'unavailable';
-  return (
-    <article className={`site-card ${featured ? 'featured-card' : ''}`}>
+  const cardContents = (
+    <>
       <div className="card-topline">
         <span className="site-mark" aria-hidden="true">{site.symbol}</span>
         <div className="badge-row" aria-label="Site status"><span className={`status-dot ${site.health}`} /><span>{statusCopy[site.health]}</span></div>
@@ -37,10 +37,16 @@ function SiteCard({ site, featured = false }: { site: SiteEntry; featured?: bool
           {site.protocol === 'native-http' && <span className="protocol http">Native HTTP</span>}
           <span className="verified">Checked {site.verifiedLabel}</span>
         </div>
-        {isAvailable ? <a className="open-link" href={site.nativeUrl} aria-label={`Open ${site.title}`}>Open <ArrowRight size={16} /></a> : <span className="open-link disabled">Paused</span>}
+        <span className={`open-link ${isAvailable ? '' : 'disabled'}`}>{isAvailable ? 'Open' : 'Paused'} {isAvailable && <ArrowRight size={16} />}</span>
       </div>
-    </article>
+    </>
   );
+
+  if (isAvailable) {
+    return <a className={`site-card site-card-link ${featured ? 'featured-card' : ''}`} href={site.nativeUrl} aria-label={`Open ${site.title} at ${site.unicodeName}/`}>{cardContents}</a>;
+  }
+
+  return <article className={`site-card ${featured ? 'featured-card' : ''}`}>{cardContents}</article>;
 }
 
 export default function Home() {
