@@ -408,6 +408,23 @@
     "monitorState": "dane_https"
   },
   {
+    "unicodeName": "cosanostr",
+    "asciiName": "cosanostr",
+    "title": "Cosa Nostr",
+    "description": "A Handshake-native Nostr client for exploring feeds, following accounts, bookmarks, and relay-backed conversations.",
+    "category": "Community",
+    "nativeUrl": "https://cosanostr/",
+    "normalUrl": null,
+    "protocol": "dane-https",
+    "lastVerified": "2026-11-23T03:05:09.715598Z",
+    "verifiedLabel": "Nov 23",
+    "health": "healthy",
+    "featured": false,
+    "symbol": "N",
+    "evidence": "Direct audit: the apex content matched the Cosa Nostr social client; parent DS and authoritative DNSSEC signatures valid; recursive AD=true; TLSA 3 1 1 matches the live certificate SPKI; HTTP 200; HTTPS 200; 2026-11-23T03:05:09.715598Z.",
+    "monitorState": "dane_https"
+  },
+  {
     "unicodeName": "bartender",
     "asciiName": "bartender",
     "title": "Bartender",
